@@ -162,6 +162,5 @@ alg = "snvg" #@param ["nvg", "hvg", "snvg", "shvg"]
 
 uploaded = files.upload()
 
-https://colab.research.google.com/drive/1R3dPIqfQB5IXYg2jYomvHufDnsGr36-q#scrollTo=cnhry6-ccCyH
 
 start('/content/' + list(uploaded)[0], sr, alg)
