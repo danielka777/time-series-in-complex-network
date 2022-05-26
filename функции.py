@@ -32,6 +32,9 @@ import librosa.display
 from google.colab import files
 import io
 
+import time
+from tqdm import tqdm
+
 """### 2. Алгоритмы конвертации<a name="algs"></a>
 
 #### Алгоритм прямой видимости<a name="nvg"></a>
@@ -65,7 +68,7 @@ def nvg(y):  # на вход массив значений
 def hvg(y):  # на вход массив значений
     # #на выходе отсортированый массив(target source)
     source_target = []
-    for i in range(len(y) - 1):
+    for i in tqdm(range(len(y) - 1)):
         source_target.append([i + 1, i + 2])
         
         for j in range(i + 2, len(y)):
