@@ -18,8 +18,6 @@ Original file is located at
 
 [3. Функция для работы с пользователем](#user)
 
-[4. Интерфейс для работы](#workk)
-
 ### 1. Загрузка библиотек<a name="load_bibl"></a>
 """
 
@@ -132,7 +130,28 @@ def shvg(y, k):
 
 """### 3. Функция для работы с пользователем<a name="user"></a>"""
 
-def start(x, alg, razmer=0):
+def start(name_file ,x, alg, razmer=0):
+    name_file = name_file.split('.')[0]
+    #audio_data = input("Введите путь до аудио файла: ")
+    #sr = int(input("Введите частоту дискретизации:"))
+    #x, sr = librosa.load(audio_data, sr)
+    #alg = input("Введите алгоритм:")
+    if alg == 'nvg':
+        result = pd.DataFrame(nvg(x), columns=['Source', 'Target'])
+    elif alg == 'hvg':
+        result = pd.DataFrame(hvg(x), columns=['Source', 'Target'])
+    elif alg == 'snvg':
+        result = pd.DataFrame(snvg(x,razmer), columns=['Source', 'Target'])
+    elif alg == 'shvg':
+        result = pd.DataFrame(shvg(x,razmer), columns=['Source', 'Target'])
+        
+    print('задача выполнена')
+    result.to_csv('/content/'+name_file+'.csv', index=False)
+
+    
+    files.download('/content/'+name_file+'.csv')
+
+def start_old(x, alg, razmer=0):
     #audio_data = input("Введите путь до аудио файла: ")
     #sr = int(input("Введите частоту дискретизации:"))
     #x, sr = librosa.load(audio_data, sr)
