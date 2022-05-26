@@ -148,3 +148,23 @@ def start(audio_data, sr, alg, razmer=0):
 
     
     files.download('/content/result.csv')
+
+def start2(x, alg, razmer=0):
+    #audio_data = input("Введите путь до аудио файла: ")
+    #sr = int(input("Введите частоту дискретизации:"))
+    #x, sr = librosa.load(audio_data, sr)
+    #alg = input("Введите алгоритм:")
+    if alg == 'nvg':
+        result = pd.DataFrame(nvg(x), columns=['Source', 'Target'])
+    elif alg == 'hvg':
+        result = pd.DataFrame(hvg(x), columns=['Source', 'Target'])
+    elif alg == 'snvg':
+        result = pd.DataFrame(snvg(x,razmer), columns=['Source', 'Target'])
+    elif alg == 'shvg':
+        result = pd.DataFrame(shvg(x,razmer), columns=['Source', 'Target'])
+        
+    print('задача выполнена')
+    result.to_csv('/content/result.csv', index=False)
+
+    
+    files.download('/content/result.csv')
