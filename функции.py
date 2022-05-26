@@ -146,10 +146,10 @@ def start(name_file ,x, alg, razmer=0):
         result = pd.DataFrame(shvg(x,razmer), columns=['Source', 'Target'])
         
     print('задача выполнена')
-    result.to_csv('/content/'+name_file+'.csv', index=False)
+    result.to_csv('/content/res_'+name_file+'.csv', index=False)
 
     
-    files.download('/content/'+name_file+'.csv')
+    files.download('/content/res_'+name_file+'.csv')
 
 def start_old(x, alg, razmer=0):
     #audio_data = input("Введите путь до аудио файла: ")
