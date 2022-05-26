@@ -43,7 +43,7 @@ from tqdm import tqdm
 def nvg(y):  # на вход массив значений
      #на выходе отсортированый массив(target source)
     source_target = []
-    for i in range(len(y) - 1):
+    for i in tqdm(range(len(y) - 1)):
         source_target.append([i + 1, i + 2])
         for j in range(i + 2, len(y)):
             flg = False
@@ -91,7 +91,7 @@ def snvg(y, k):
     #k = 100  
     source_target = nvg(y[:k])
 
-    for i in range(k, n):
+    for i in tqdm(range(k, n)):
         source_target.append([i, i + 1])
         for j in range(i - k, i - 1):
             flg = False
@@ -114,7 +114,7 @@ def shvg(y, k):
     #k = 100  
     source_target = hvg(y[:k])
 
-    for i in range(k, n):
+    for i in tqdm(range(k, n)):
         source_target.append([i, i + 1])
         for j in range(i - k, i - 1):
             flg = False
