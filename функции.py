@@ -187,6 +187,7 @@ def razdel(otrz, razr, name_file, sr, alg, razmer=0):
       start_music(new_name, sr, alg, razmer)
       if k == s:
         k += 1
+        new_name = name_file.split('.')[0] + '_' + str(k)+ '.wav'
         sound[i:].export('/content/'+ new_name, format="wav")
         start_music(new_name, sr, alg, razmer)
         break
