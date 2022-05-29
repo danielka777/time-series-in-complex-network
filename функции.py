@@ -21,8 +21,6 @@ Original file is located at
 ### 1. Загрузка библиотек<a name="load_bibl"></a>
 """
 
-
-
 # импортируем необходимые библиотеки
 import pandas as pd
 import numpy as np
@@ -156,9 +154,9 @@ def start(name_file ,x, alg, razmer=0):
     
     files.download('/content/res_'+name_file+'_'+alg+'.csv')
 
-def start_music(name_file, sr, alg, razmer=0):
-    name_file = name_file.split('.')[0]
-    audio_data = '/content/'+ name_file
+def start_music(name_file1, sr, alg, razmer=0):
+    name_file = name_file1.split('.')[0]
+    audio_data = '/content/'+ name_file1
     x, sr = librosa.load(audio_data, sr)
 
     if alg == 'nvg':
