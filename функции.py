@@ -21,6 +21,8 @@ Original file is located at
 ### 1. Загрузка библиотек<a name="load_bibl"></a>
 """
 
+pip install pydub
+
 # импортируем необходимые библиотеки
 import pandas as pd
 import numpy as np
@@ -32,6 +34,9 @@ import io
 
 import time
 from tqdm import tqdm
+
+import math as m
+from pydub import AudioSegment
 
 """### 2. Алгоритмы конвертации<a name="algs"></a>
 
@@ -151,11 +156,11 @@ def start(name_file ,x, alg, razmer=0):
     
     files.download('/content/res_'+name_file+'_'+alg+'.csv')
 
-def start_old(x, alg, razmer=0):
-    #audio_data = input("Введите путь до аудио файла: ")
-    #sr = int(input("Введите частоту дискретизации:"))
-    #x, sr = librosa.load(audio_data, sr)
-    #alg = input("Введите алгоритм:")
+def start_music(name_file, sr, alg, razmer=0):
+    name_file = name_file.split('.')[0]
+    audio_data = '/content/'+ name_file
+    x, sr = librosa.load(audio_data, sr)
+
     if alg == 'nvg':
         result = pd.DataFrame(nvg(x), columns=['Source', 'Target'])
     elif alg == 'hvg':
@@ -166,7 +171,24 @@ def start_old(x, alg, razmer=0):
         result = pd.DataFrame(shvg(x,razmer), columns=['Source', 'Target'])
         
     print('задача выполнена')
-    result.to_csv('/content/result.csv', index=False)
+    result.to_csv('/content/res_'+name_file+'_'+alg+'.csv', index=False)
 
     
-    files.download('/content/result.csv')
+    files.download('/content/res_'+name_file+'_'+alg+'.csv')
+
+def razdel(otrz, razr, name_file, sr, alg, razmer=0):
+  if razr == 'wav':
+    audio_data = '/content/' + name_file
+    sound = AudioSegment.from_wav(audio_data)
+    s = m.floor(len(sound)/otrz)
+    k = 0
+    for i in range(otrz,len(sound),otrz):
+      k += 1
+      new_name = name_file.split('.')[0] + '_' + str(k)+ '.wav'
+      sound[i-otrz: i].export('/content/'+ new_name, format="wav")
+      start_music(new_name, sr, alg, razmer)
+      if k == s:
+        k += 1
+        sound[i:].export('/content/'+ new_name, format="wav")
+        start_music(new_name, sr, alg, razmer)
+        break
