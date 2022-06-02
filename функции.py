@@ -21,8 +21,6 @@ Original file is located at
 ### 1. Загрузка библиотек<a name="load_bibl"></a>
 """
 
-
-
 # импортируем необходимые библиотеки
 import pandas as pd
 import numpy as np
@@ -177,13 +175,11 @@ def start_music(name_file1, sr, alg, razmer=0):
     files.download('/content/res_'+name_file+'_'+alg+'.csv')
 
 def razdel(otrz, razr, name_file, sr, alg, razmer=0):
+  audio_data = '/content/' + name_file
   if razr == 'wav':
     sound = AudioSegment.from_wav(audio_data)
   elif  razr == 'mp3':
     sound = AudioSegment.from_mp3(audio_data)
-
-    
-  audio_data = '/content/' + name_file
  
   s = m.floor(len(sound)/otrz)
   k = 0
