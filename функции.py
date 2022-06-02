@@ -21,6 +21,8 @@ Original file is located at
 ### 1. Загрузка библиотек<a name="load_bibl"></a>
 """
 
+pip install pydub
+
 # импортируем необходимые библиотеки
 import pandas as pd
 import numpy as np
@@ -176,18 +178,23 @@ def start_music(name_file1, sr, alg, razmer=0):
 
 def razdel(otrz, razr, name_file, sr, alg, razmer=0):
   if razr == 'wav':
-    audio_data = '/content/' + name_file
     sound = AudioSegment.from_wav(audio_data)
-    s = m.floor(len(sound)/otrz)
-    k = 0
-    for i in range(otrz,len(sound),otrz):
+  elif  razr == 'mp3':
+    sound = AudioSegment.from_mp3(audio_data)
+
+    
+  audio_data = '/content/' + name_file
+ 
+  s = m.floor(len(sound)/otrz)
+  k = 0
+  for i in range(otrz,len(sound),otrz):
+    k += 1
+    new_name = name_file.split('.')[0] + '_' + str(k)+ '.'+razr
+    sound[i-otrz: i].export('/content/'+ new_name, format=razr)
+    start_music(new_name, sr, alg, razmer)
+    if k == s:
       k += 1
-      new_name = name_file.split('.')[0] + '_' + str(k)+ '.wav'
-      sound[i-otrz: i].export('/content/'+ new_name, format="wav")
+      new_name = name_file.split('.')[0] + '_' + str(k)+ '.'+razr
+      sound[i:].export('/content/'+ new_name, format=razr)
       start_music(new_name, sr, alg, razmer)
-      if k == s:
-        k += 1
-        new_name = name_file.split('.')[0] + '_' + str(k)+ '.wav'
-        sound[i:].export('/content/'+ new_name, format="wav")
-        start_music(new_name, sr, alg, razmer)
-        break
+      break
