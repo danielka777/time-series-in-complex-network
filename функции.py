@@ -21,7 +21,7 @@ Original file is located at
 ### 1. Загрузка библиотек<a name="load_bibl"></a>
 """
 
-pip install pydub
+
 
 # импортируем необходимые библиотеки
 import pandas as pd
