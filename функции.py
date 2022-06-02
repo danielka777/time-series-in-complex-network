@@ -34,6 +34,7 @@ import time
 from tqdm import tqdm
 
 import math as m
+from pydub import AudioSegment
 
 """### 2. Алгоритмы конвертации<a name="algs"></a>
 
