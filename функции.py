@@ -44,7 +44,7 @@ from pydub import AudioSegment
 def nvg(y):  # на вход массив значений
     # на выходе отсортированый массив(target source)
     source_target = []
-    for i in range(len(y) - 1):
+    for i in tqdm(range(len(y) - 1)):
         source_target.append([i + 1, i + 2])
         m = y[i + 1]
         m_t = i + 1
@@ -85,7 +85,7 @@ def old_nvg(y):  # на вход массив значений
 def hvg(y):  # на вход массив значений
     # #на выходе отсортированый массив(target source)
     source_target = []
-    for i in range(len(y) - 1):
+    for i in tqdm(range(len(y) - 1)):
         source_target.append([i + 1, i + 2])
         m = y[i + 1]
         for j in range(i + 2, len(y)):
