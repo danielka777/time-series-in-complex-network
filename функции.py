@@ -124,7 +124,7 @@ def snvg(y, k):
     # k = 100
     source_target = nvg(y[:k])
 
-    for i in range(k, n):
+    for i in tqdm(range(k, n)):
         source_target.append([i, i + 1])
         m = y[i - 1]
         m_t = i - 1
@@ -165,7 +165,7 @@ def shvg(y, k):
     # k = 100
     source_target = hvg(y[:k])
 
-    for i in range(k, n):
+    for i in tqdm(range(k, n)):
         source_target.append([i, i + 1])
         m = y[i - 1]
         for j in range(i-2, i-k-1, -1):
