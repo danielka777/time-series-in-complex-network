@@ -121,6 +121,24 @@ def old_hvg(y):  # на вход массив значений
 
 def snvg(y, k):
     n = len(y)
+    # k = 100
+    source_target = nvg(y[:k])
+
+    for i in range(k, n):
+        source_target.append([i, i + 1])
+        m = y[i - 1]
+        m_t = i - 1
+        for j in range(i - 2, i - k - 1, -1):
+            if m < y[j] + ((y[i] - y[j]) * ((j - m_t) / (j - i))):
+                if y[j] > m:
+                    m = y[j]
+                    m_t = j
+                source_target.append([j + 1, i + 1])
+
+    return source_target
+
+def old_snvg(y, k):
+    n = len(y)
     #k = 100  
     source_target = nvg(y[:k])
 
@@ -143,6 +161,22 @@ def snvg(y, k):
 """#### Скользящее окно для hvg<a name="shvg"></a>"""
 
 def shvg(y, k):
+    n = len(y)
+    # k = 100
+    source_target = hvg(y[:k])
+
+    for i in range(k, n):
+        source_target.append([i, i + 1])
+        m = y[i - 1]
+        for j in range(i-2, i-k-1, -1):
+            if y[i] <= m:
+                break
+
+            if y[i] > m and y[j] > m:
+                m = y[j]
+                source_target.append([j + 1, i + 1])
+
+def old_shvg(y, k):
     n = len(y)
     #k = 100  
     source_target = hvg(y[:k])
