@@ -42,6 +42,22 @@ from pydub import AudioSegment
 """
 
 def nvg(y):  # на вход массив значений
+    # на выходе отсортированый массив(target source)
+    source_target = []
+    for i in range(len(y) - 1):
+        source_target.append([i + 1, i + 2])
+        m = y[i + 1]
+        m_t = i + 1
+        for j in range(i + 2, len(y)):
+            if m < y[j] + ((y[i] - y[j]) * ((j - m_t) / (j - i))):
+                if y[j] > m:
+                    m = y[j]
+                    m_t = j
+                source_target.append([i + 1, j + 1])
+
+    return source_target
+
+def old_nvg(y):  # на вход массив значений
      #на выходе отсортированый массив(target source)
     source_target = []
     for i in tqdm(range(len(y) - 1)):
@@ -67,6 +83,22 @@ def nvg(y):  # на вход массив значений
 """
 
 def hvg(y):  # на вход массив значений
+    # #на выходе отсортированый массив(target source)
+    source_target = []
+    for i in range(len(y) - 1):
+        source_target.append([i + 1, i + 2])
+        m = y[i + 1]
+        for j in range(i + 2, len(y)):
+            if y[i] <= m:
+                break
+
+            if y[i] > m and y[j] > m:
+                m = y[j]
+                source_target.append([i + 1, j + 1])
+
+    return source_target
+
+def old_hvg(y):  # на вход массив значений
     # #на выходе отсортированый массив(target source)
     source_target = []
     for i in tqdm(range(len(y) - 1)):
