@@ -5,10 +5,12 @@
 </h1>
 _Generate images from a text prompt_
 
+## Реализованные алгоритмы
+функция
 
 
 
-## How to use it?
+## Возмоности программы
 
 There are several ways to use DALL·E mini to create your own images:
 
