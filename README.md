@@ -1,7 +1,7 @@
 
 <h1>
   Инстурмент конвертирования временных рядов в сети
-  <img src="https://media.giphy.com/media/KAqOh6pbJ6qTasMB2E/giphy.gif" width="70"/> 
+  <img src="https://media.giphy.com/media/KAqOh6pbJ6qTasMB2E/giphy.gif" width="100"/> 
 </h1>
 _Generate images from a text prompt_
 
