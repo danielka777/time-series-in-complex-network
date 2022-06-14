@@ -1,4 +1,4 @@
-# DALL·E Mini
+# Инстурмент конвертирования временных рядов в сети
 
 _Generate images from a text prompt_
 
