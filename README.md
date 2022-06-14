@@ -1,8 +1,11 @@
-# Инстурмент конвертирования временных рядов в сети
 
+<h1>
+  Инстурмент конвертирования временных рядов в сети
+  <img src="https://media.giphy.com/media/KAqOh6pbJ6qTasMB2E/giphy.gif" width="70"/> 
+</h1>
 _Generate images from a text prompt_
 
-<img src="" width="200">
+
 
 
 ## How to use it?
