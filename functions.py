@@ -243,9 +243,9 @@ def start_music(name_file1, sr, alg, razmer=0):
 def razdel(otrz, razr, name_file, sr, alg, razmer=0):
   audio_data = '/content/' + name_file
   if razr == 'wav':
-    sound = AudioSegment.from_wav(audio_data)
+    sound = AudioSegment.from_file(audio_data)
   elif  razr == 'mp3':
-    sound = AudioSegment.from_mp3(audio_data)
+    sound = AudioSegment.from_file(audio_data)
  
   s = m.floor(len(sound)/otrz)
   k = 0
